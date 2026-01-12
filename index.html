@@ -37,11 +37,11 @@ p { font-size:1em; line-height:1.5; text-align:left; }
 .corazon { font-size:2.5em; margin-top:20px; animation: latido 1.2s infinite; }
 @keyframes latido {0%{transform:scale(1);}50%{transform:scale(1.2);}100%{transform:scale(1);}}
 
-.btn-next {
+.btn-next, #playMusic {
     margin-top:20px; cursor:pointer; font-size:1em;
     background: rgba(255,255,255,0.2); border:none; padding:8px 16px; border-radius:10px; color:white; transition:0.3s;
 }
-.btn-next:hover { background: rgba(255,255,255,0.4); }
+.btn-next:hover, #playMusic:hover { background: rgba(255,255,255,0.4); }
 
 /* Imagen con texto al lado */
 .foto-texto {
@@ -54,7 +54,7 @@ p { font-size:1em; line-height:1.5; text-align:left; }
     .carta {padding:20px; font-size:0.9em;}
     h1 {font-size:1.8em;}
     p {font-size:0.9em;}
-    .btn-next {font-size:0.9em; padding:6px 12px;}
+    .btn-next, #playMusic {font-size:0.9em; padding:6px 12px;}
     .foto-texto {flex-direction:column;}
     .foto-texto img {margin:0 0 10px 0; width:100%; max-width:300px;}
 }
@@ -68,11 +68,15 @@ p { font-size:1em; line-height:1.5; text-align:left; }
 <h1>Viviana Montserrat</h1>
 <div id="texto"></div>
 <div class="corazon">❤️</div>
+
+<!-- Botón para reproducir música -->
+<button id="playMusic">🎵 Reproducir música</button>
+
 <button class="btn-next" id="siguiente">Siguiente ➡️</button>
 </div>
 
 <!-- Música de fondo en MP3 -->
-<audio id="musica" src="musica.mp3" autoplay loop></audio>
+<audio id="musica" src="musica.mp3" loop></audio>
 
 <script>
 // --- Canvas de partículas ---
@@ -143,28 +147,30 @@ Este no es solo un recuerdo, es una promesa de seguir caminando juntos.
 </p>
 <p><strong>Te amo.</strong></p>`,
 
-`<div class="foto-texto"><img src="foto1.jpeg"><p>Donde todo empezó esta locura ccp1912</p></div>`,
-`<div class="foto-texto"><img src="foto2.jpeg"><p>Cada dia mas iba conociéndote y queriendo mas cosas contigo</p></div>`,
-`<div class="foto-texto"><img src="foto3.jpeg"><p>A tu lado siempre me siento completo y no quiero a nadie mas</p></div>`,
-`<div class="foto-texto"><img src="foto4.jpeg"><p>Aunque digas que salis mal a mi me encantan las fotos que nos quitamos</p></div>`,
-`<div class="foto-texto"><img src="foto5.jpeg"><p>Sos el motivo por el cual quiero salir adelante</p></div>`,
-`<div class="foto-texto"><img src="foto6.jpeg"><p>Ya nos falta el oficial</p></div>`,
-`<div class="foto-texto"><img src="foto7.jpeg"><p>Pero con esto por ahora me conformo (tenemos que renovar este año)</p></div>`,
-`<div class="foto-texto"><img src="foto8.jpeg"><p>Sos mi compañera en todo y para todo</p></div>`,
-`<div class="foto-texto"><img src="foto9.jpeg"><p>No sabes lo que causa tus besos en mi vida</p></div>`,
-`<div class="foto-texto"><img src="foto10.jpeg"><p>Tenerte a mi lado es lo que mas me gusta</p></div>`,
-`<div class="foto-texto"><img src="foto11.jpeg"><p>Mi compañera de viajes, sin vos a mi lado ya no me veo viajando</p></div>`,
-`<div class="foto-texto"><img src="foto12.jpeg"><p>Me tenes loco che morenita juky</p></div>`,
-`<div class="foto-texto"><img src="foto13.jpeg"><p>Mi novia del mundial</p></div>`,
-`<div class="foto-texto"><img src="foto14.jpeg"><p>Amor todo llega a su tiempo y el nuestro esta llegando pronto ñamendata</p></div>`,
-`<div class="foto-texto"><img src="foto15.jpeg"><p>Siempre espero tenerte conmigo</p></div>`,
-`<div class="foto-texto"><img src="foto16.jpeg"><p>Y nunca me falte tu presencia</p></div>`,
-`<div class="foto-texto"><img src="foto17.jpeg"><p>Un futuro sin vos ya no veo TE AMO</p></div>`
+`<div class="foto-texto"><img src="foto1.jpeg"><p>donde todo empezó esta locura ccp1912</p></div>`,
+`<div class="foto-texto"><img src="foto2.jpeg"><p>cada dia mas iba conociéndote y queriendo mas cosas contigo</p></div>`,
+`<div class="foto-texto"><img src="foto3.jpeg"><p>una de las tantas que tenemos en tu casa realmente la primera vez que pise tu casa estaba muy nervioso</p></div>`,
+`<div class="foto-texto"><img src="foto4.jpeg"><p>siempre me gustaba verte sonreir</p></div>`,
+`<div class="foto-texto"><img src="foto5.jpeg"><p>cuando contagiamos a todos la gripe</p></div>`,
+`<div class="foto-texto"><img src="foto6.jpeg"><p>ñamendama katu kañyhape</p></div>`,
+`<div class="foto-texto"><img src="foto7.jpeg"><p>presumiendo el anillo</p></div>`,
+`<div class="foto-texto"><img src="foto8.jpeg"><p>asi como me ves siempre me hiciste feliz</p></div>`,
+`<div class="foto-texto"><img src="foto9.jpeg"><p>no sabes lo que causa tus besos en mi vida</p></div>`,
+`<div class="foto-texto"><img src="foto10.jpeg"><p>sin vos que va a pasar de mi, mi compañera para todo</p></div>`,
+`<div class="foto-texto"><img src="foto11.jpeg"><p>mi compañera de viajes, sin vos a mi lado ya no me veo viajando</p></div>`,
+`<div class="foto-texto"><img src="foto12.jpeg"><p>me tenes loco che morenita juky</p></div>`,
+`<div class="foto-texto"><img src="foto13.jpeg"><p>mi novia del mundial</p></div>`,
+`<div class="foto-texto"><img src="foto14.jpeg"><p>amor todo llega a su tiempo y el nuestro esta llegando pronto ñamendata</p></div>`,
+`<div class="foto-texto"><img src="foto15.jpeg"><p>siempre espero tenerte conmigo</p></div>`,
+`<div class="foto-texto"><img src="foto16.jpeg"><p>y nunca me falte tu presencia</p></div>`,
+`<div class="foto-texto"><img src="foto17.jpeg"><p>un futuro sin vos ya no veo TE AMO</p></div>`
 ];
 
 let paginaActual=0;
 const textoDiv=document.getElementById('texto');
 const btn=document.getElementById('siguiente');
+const playBtn=document.getElementById('playMusic');
+const audio=document.getElementById('musica');
 
 function mostrarPagina(){
     textoDiv.style.opacity=0;
@@ -173,6 +179,12 @@ function mostrarPagina(){
         textoDiv.style.opacity=1;
     },300);
 }
+
+// Botón de música
+playBtn.addEventListener('click', ()=>{
+    audio.play();
+    playBtn.style.display='none';
+});
 
 btn.addEventListener('click', ()=>{
     paginaActual++;
